@@ -33,9 +33,9 @@ class Greeter extends Helloworld\GreeterStub
     }
 }
 
-$port = 50051;
+$listener = '127.0.0.1:50051';
 $server = new \Grpc\RpcServer();
-$server->addHttp2Port('0.0.0.0:'.$port);
+$server->addHttp2Port($listener);
 $server->handle(new Greeter());
-echo 'Listening on port :' . $port . PHP_EOL;
+echo 'Listening on port :' . $listener . PHP_EOL;
 $server->run();

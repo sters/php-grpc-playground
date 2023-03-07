@@ -29,6 +29,10 @@ function greet($hostname, $name)
     $client = new Helloworld\GreeterClient($hostname, [
         'credentials' => Grpc\ChannelCredentials::createInsecure(),
     ]);
+
+    echo "Client was initialized. Press Enter to continue.";
+    fgets(STDIN);
+
     $request = new Helloworld\HelloRequest();
     $request->setName($name);
     list($response, $status) = $client->SayHello($request)->wait();
